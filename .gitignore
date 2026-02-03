@@ -1,0 +1,112 @@
+# AI智能客服系统 - Git忽略文件配置
+
+# 前端项目忽略文件 (Vue 3)
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+frontend/.vscode/
+frontend/.idea/
+frontend/*.log
+frontend/package-lock.json
+frontend/yarn.lock
+frontend/pnpm-lock.yaml
+
+# 后端项目忽略文件 (Spring Boot)
+backend/target/
+backend/.idea/
+backend/.vscode/
+backend/*.log
+backend/*.iml
+backend/out/
+backend/.gradle/
+gradle-wrapper.jar
+
+# 通用忽略文件
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# 环境配置文件
+.env
+.env.local
+.env.*.local
+application-dev.yml
+application-test.yml
+
+# 构建和依赖文件
+build/
+dist/
+out/
+
+# IDE相关文件
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 日志文件
+logs/
+*.log
+
+# 临时文件
+tmp/
+temp/
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# 证书文件
+*.pem
+*.key
+*.crt
+
+# 编译产物
+*.class
+*.jar
+*.war
+*.ear
+
+# 依赖管理
+node_modules/
+jspm_packages/
+
+# 测试覆盖率报告
+coverage/
+*.lcov
+
+# 缓存文件
+.cache/
+.temp/
+
+# OS生成的文件
+Thumbs.db
+.DS_Store
+
+# 编辑器配置文件
+.editorconfig
+
+# 其他临时文件
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# 构建工具文件
+Makefile
+
+# 代码分析工具
+.sonarlint/
+
+# 持续集成配置
+.gitlab-ci.yml
+.travis.yml
+circle.yml
