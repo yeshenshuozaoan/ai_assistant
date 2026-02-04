@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDateTime;
 
 @Service
 public class UserService {
@@ -15,9 +16,38 @@ public class UserService {
 
     static {
         // 初始化一些测试数据
-        users.add(new User(1L, "admin", "admin@example.com", "admin123"));
-        users.add(new User(2L, "user1", "user1@example.com", "user123"));
-        users.add(new User(3L, "user2", "user2@example.com", "user123"));
+        User user1 = new User();
+        user1.setId(1L);
+        user1.setPhone("13800138001");
+        user1.setUserId("user1");
+        user1.setRole("admin");
+        user1.setVip(true);
+        user1.setCrmId("crm1");
+        user1.setCreatedAt(LocalDateTime.now());
+        user1.setUpdatedAt(LocalDateTime.now());
+        users.add(user1);
+
+        User user2 = new User();
+        user2.setId(2L);
+        user2.setPhone("13800138002");
+        user2.setUserId("user2");
+        user2.setRole("user");
+        user2.setVip(false);
+        user2.setCrmId("crm2");
+        user2.setCreatedAt(LocalDateTime.now());
+        user2.setUpdatedAt(LocalDateTime.now());
+        users.add(user2);
+
+        User user3 = new User();
+        user3.setId(3L);
+        user3.setPhone("13800138003");
+        user3.setUserId("user3");
+        user3.setRole("vip");
+        user3.setVip(true);
+        user3.setCrmId("crm3");
+        user3.setCreatedAt(LocalDateTime.now());
+        user3.setUpdatedAt(LocalDateTime.now());
+        users.add(user3);
     }
 
     /**
@@ -40,6 +70,28 @@ public class UserService {
     }
 
     /**
+     * 根据手机号获取用户
+     * @param phone 手机号
+     * @return 用户对象
+     */
+    public Optional<User> getUserByPhone(String phone) {
+        return users.stream()
+                .filter(user -> user.getPhone().equals(phone))
+                .findFirst();
+    }
+
+    /**
+     * 根据用户ID获取用户
+     * @param userId 用户ID
+     * @return 用户对象
+     */
+    public Optional<User> getUserByUserId(String userId) {
+        return users.stream()
+                .filter(user -> user.getUserId().equals(userId))
+                .findFirst();
+    }
+
+    /**
      * 添加用户
      * @param user 用户对象
      * @return 添加的用户对象
@@ -51,6 +103,8 @@ public class UserService {
                 .max()
                 .orElse(0) + 1;
         user.setId(newId);
+        user.setCreatedAt(LocalDateTime.now());
+        user.setUpdatedAt(LocalDateTime.now());
         users.add(user);
         return user;
     }
@@ -65,9 +119,12 @@ public class UserService {
         Optional<User> existingUser = getUserById(id);
         if (existingUser.isPresent()) {
             User userToUpdate = existingUser.get();
-            userToUpdate.setUsername(user.getUsername());
-            userToUpdate.setEmail(user.getEmail());
-            userToUpdate.setPassword(user.getPassword());
+            userToUpdate.setPhone(user.getPhone());
+            userToUpdate.setUserId(user.getUserId());
+            userToUpdate.setRole(user.getRole());
+            userToUpdate.setVip(user.isVip());
+            userToUpdate.setCrmId(user.getCrmId());
+            userToUpdate.setUpdatedAt(LocalDateTime.now());
             return Optional.of(userToUpdate);
         }
         return Optional.empty();

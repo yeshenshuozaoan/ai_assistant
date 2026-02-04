@@ -4,25 +4,22 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "channels")
+public class Channel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String phone;
+    @Column(name = "channel_name")
+    private String channelName;
     
-    @Column(name = "user_id")
-    private String userId;
+    @Column(name = "channel_type")
+    private String channelType;
     
-    private String role;
+    private String config;
     
-    @Column(name = "is_vip")
-    private boolean isVip;
-    
-    @Column(name = "crm_id")
-    private String crmId;
+    private String status;
     
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -39,44 +36,36 @@ public class User {
         this.id = id;
     }
     
-    public String getPhone() {
-        return phone;
+    public String getChannelName() {
+        return channelName;
     }
     
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setChannelName(String channelName) {
+        this.channelName = channelName;
     }
     
-    public String getUserId() {
-        return userId;
+    public String getChannelType() {
+        return channelType;
     }
     
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setChannelType(String channelType) {
+        this.channelType = channelType;
     }
     
-    public String getRole() {
-        return role;
+    public String getConfig() {
+        return config;
     }
     
-    public void setRole(String role) {
-        this.role = role;
+    public void setConfig(String config) {
+        this.config = config;
     }
     
-    public boolean isVip() {
-        return isVip;
+    public String getStatus() {
+        return status;
     }
     
-    public void setVip(boolean isVip) {
-        this.isVip = isVip;
-    }
-    
-    public String getCrmId() {
-        return crmId;
-    }
-    
-    public void setCrmId(String crmId) {
-        this.crmId = crmId;
+    public void setStatus(String status) {
+        this.status = status;
     }
     
     public LocalDateTime getCreatedAt() {
